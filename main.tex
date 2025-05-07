@@ -4,7 +4,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
-
+\usepackage{graphicx}
 % Operators
 \DeclareMathOperator*{\argmax}{arg,max}
 
@@ -15,8 +15,21 @@
 
 \begin{document}
 \maketitle
+\section*{Theory}
+In multivariable calculus, gradient descent can be used to find the minimum of a function by continuously moving in the direction of the negative gradient. A key point to understand is that the gradient points in the direction of maximum increase; therefore, the negative gradient will point in the direction of the maximum decrease.
+\subsection*{Trivial Example}
+We can demonstrate gradient descent with a trivial example. For example, we can use gradient descent to minimize some multivariable function. Consider the function $f(x, y) = x^2y$. We can take the partial derivatives of this function to obtain $\frac{\partial f}{\partial x} = 2xy$ and $\frac{\partial f}{\partial y} = x^2$. We know that the gradient of the function is then $\nabla f = (2xy, x^2)$.
 
-\section*{Introduction}
+Now, imagine that the surface of the graph is a hill. If you are at some initial position $(x, y)$, then you want to take a step in the direction of a negative slope if you want to reach a minimum. Mathematically, this means you should move by some amount in the direction of the negative gradient. Therefore, you should take your initial position and subtract the gradient times some amount, or learning rate $\eta$. You want smaller values of $\eta$ though because you don't want to overshoot the minimum. Using all of this information, we can construct a gradient descent update:
+
+\[(x_{new}, y_{new}) = (x, y) - \eta \nabla f(x, y)\]
+
+\subsection*{Example}
+Consider the function $f(x, y) = x^2 + y^2$. The partial derivatives are $\frac{\partial f}{\partial x} = 2x$ and $\frac{\partial f}{\partial y} = 2y$. Therefore, the gradient vector is $(2x, 2y)$. Say you start at the point $(2, 2)$ and you want to use gradient descent to deduce where the location of the minimum is. Applying the previously derived gradient descent formula:
+\[(x_{new}, y_{new}) = (2, 2) - \eta \nabla f(2, 2)\]
+We can let $\eta = 0.1$ for simplicity. The gradient of $f$ evaluated at the initial position $(2, 2)$ is $(2(2), 2(2)) = (4, 4)$. Multiplying this by $\eta$ gives $(0.4, 0.4)$. Therefore, the next point is $(1.6, 1.6)$. Of course, repeating this process multiple times will get you closer and closer to the minimum value of $(0, 0)$.
+
+\section*{Application}
 
 In multivariable calculus, gradient descent can be used to find the minimum of a function by continuously moving in the direction of the negative gradient. A key point to understand is that the gradient points in the direction of maximum increase; therefore, the negative gradient will point in the direction of the maximum decrease. We can extend this principle to real-world problems, where we transform a problem into a function of multiple variables that we then minimize.
 In our case, we are converting creating a continouous ''loss'' function from the information of all 81 tiles in a Sudoku board, and then computing the gradient to navigate towards a solved board.
@@ -97,8 +110,8 @@ clues dominate early optimisation; row/column/block rules clean things up later.
            \end{align*}
 
     \item \textbf{Stopping.} Quit when $L<10^{-6}$ or after 5000 iterations. If the
-          algorithm stagnates, add a whisper of random noise to $\mathbf z$ and
-          restart; this usually hops out of a shallow local minimum.
+          algorithm stagnates, add a bunch of random noise to $\mathbf z$ and
+          restart; this usually shakes us out of a shallow local minimum.
     
     \item \textbf{Read out the board.} At convergence, each $p_{r,c}$ is nearly
           one-hot. Pick the index of its largest entry.
@@ -109,8 +122,6 @@ Huge help from Geeks for Geeks explaining softmax and calculating the gradient o
 
 \url{https://www.geeksforgeeks.org/derivative-of-the-softmax-function-and-the-categorical-cross-entropy-loss/}
 
-\section{Example run (NY Times ``Medium'')}
-
 The solver reaches a perfect board in roughly 2300 iterations ($\approx$0.8 s on a
 laptop). Figure 1 (omitted here) shows the loss curve decreasing smoothly—evidence
 that the learning-rate schedule is well behaved.
@@ -125,22 +136,29 @@ that the learning-rate schedule is well behaved.
           literally see the digits "crystallise" as training progresses.
 \end{itemize}
 
-\end{document}
+The solver reaches a perfect board after its 5000 iterations ($\approx$2.203 s on a
+laptop). The loss curve quickly diminishes, showing that the descent works well!
 
-\section{Example run (NY Times ``Medium'')}
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.4\textwidth]{medium.png}
+      \caption{NYT Medium Sudoku Puzzle (Source: New York Times)}
+      \label{fig:medium}
 
-The solver reaches a perfect board in roughly 2300 iterations ($\approx$0.8 s on a
-laptop). Figure 1 (omitted here) shows the loss curve decreasing smoothly—evidence
-that the learning-rate schedule is well behaved.
+      \includegraphics[width=0.4\textwidth]{loss.png}
+      \caption{Loss over iterations}
+      \label{fig:loss}
 
-\section*{Key take-aways for future projects}
-\begin{itemize}
-    \item Turning hard equality constraints into soft quadratic penalties is often
-          enough to let calculus machinery solve discrete puzzles.
-    \item Weight tuning matters more than fancy optimisers: a poor $w_{\text{giv}}$
-          either erases clues or prevents progress entirely.
-    \item Visualising intermediate probabilities is invaluable for debugging—you can
-          literally see the digits "crystallise" as training progresses.
-\end{itemize}
+      \setlength{\fboxsep}{0pt}
+      \setlength{\fboxrule}{1pt}
+      \fbox{\includegraphics[width=0.4\textwidth]{results.png}}
+            \caption{Results}
+            \label{fig:results}
+
+      \includegraphics[width=0.4\textwidth]{solved.png}
+      \caption{Solved puzzle}
+      \label{fig:solved}
+
+\end{figure}
 
 \end{document}
