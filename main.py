@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
+# jack's implementation of a sudoku solver using gradient descent
+# mvc final 2025
+
 def read_puzzle(puzzle_str):
     puzzle_str = ''.join(puzzle_str.split())
     grid = []
@@ -14,6 +17,9 @@ def read_puzzle(puzzle_str):
         raise ValueError(f'Puzzle must have 81 cells, found {len(grid)}.')
     return np.array(grid, dtype=int).reshape(9, 9)
 
+    # simple function to read sudoku puzzle from string I input
+
+
 def print_grid(grid):
     line = '+-------+-------+-------+'
     for r in range(9):
@@ -25,14 +31,15 @@ def print_grid(grid):
             row += str(int(grid[r, c])) + ' '
         print(row + '|')
     print(line)
+    # shoutout mr. gao for teaching me how to print grids
 
 def solve_sudoku(initial_clues, 
                  eta0=1.5, max_iter=5000, 
-                 w_giv=20., w_row=1., w_col=1., w_sub=1.):
+                 w_giv=20., w_row=1., w_col=1., w_sub=1.): # hyperparameters shall work this time
     z = np.zeros((9, 9, 9))
     fixed_mask = np.zeros_like(z, dtype=bool)
 
-    for r in range(9):
+    for r in range(9): # initialize logits based on given clues
         for c in range(9):
             if initial_clues[r, c] != 0:
                 d = initial_clues[r, c] - 1
@@ -40,7 +47,7 @@ def solve_sudoku(initial_clues,
                 z[r, c, d] = 10
                 fixed_mask[r, c] = True
 
-    def softmax(z):
+    def softmax(z): # softmax
         e = np.exp(z - z.max(axis=2, keepdims=True))
         return e / e.sum(axis=2, keepdims=True)
 
@@ -57,7 +64,7 @@ def solve_sudoku(initial_clues,
                 if g != 0:
                     pred = (p[r, c] * np.arange(1, 10)).sum()
                     err = 2 * (pred - g)
-                    grad[r, c] += w_giv * err * np.arange(1, 10) * p[r, c] * (1 - p[r, c])
+                    grad[r, c] += w_giv * err * np.arange(1, 10) * p[r, c] * (1 - p[r, c]) # calculate loss
 
         for d in range(9):
             row_sum = p[:, :, d].sum(axis=1, keepdims=True)
@@ -88,7 +95,7 @@ def solve_sudoku(initial_clues,
     print(f"\nGradient descent finished in {k+1} iterations.")
     print(f"Total time elapsed: {elapsed:.3f} seconds")
 
-    # Plot loss curve
+    # plot loss curve
     plt.plot(loss_history)
     plt.title("Loss Curve")
     plt.xlabel("Iteration")

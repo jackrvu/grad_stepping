@@ -122,20 +122,6 @@ Huge help from Geeks for Geeks explaining softmax and calculating the gradient o
 
 \url{https://www.geeksforgeeks.org/derivative-of-the-softmax-function-and-the-categorical-cross-entropy-loss/}
 
-The solver reaches a perfect board in roughly 2300 iterations ($\approx$0.8 s on a
-laptop). Figure 1 (omitted here) shows the loss curve decreasing smoothly—evidence
-that the learning-rate schedule is well behaved.
-
-\section*{Key take-aways for future projects}
-\begin{itemize}
-    \item Turning hard equality constraints into soft quadratic penalties is often
-          enough to let calculus machinery solve discrete puzzles.
-    \item Weight tuning matters more than fancy optimisers: a poor $w_{\text{giv}}$
-          either erases clues or prevents progress entirely.
-    \item Visualising intermediate probabilities is invaluable for debugging—you can
-          literally see the digits "crystallise" as training progresses.
-\end{itemize}
-
 The solver reaches a perfect board after its 5000 iterations ($\approx$2.203 s on a
 laptop). The loss curve quickly diminishes, showing that the descent works well!
 

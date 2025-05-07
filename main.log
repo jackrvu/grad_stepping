@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.20)  6 MAY 2025 20:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.20)  6 MAY 2025 21:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -392,25 +392,25 @@ Overfull \hbox (195.07011pt too wide) in paragraph at lines 123--124
 ] 
  []
 
-<medium.png, id=55, 994.71625pt x 748.7975pt>
+<medium.png, id=51, 994.71625pt x 748.7975pt>
 File: medium.png Graphic file (type png)
 <use medium.png>
-Package pdftex.def Info: medium.png  used on input line 144.
+Package pdftex.def Info: medium.png  used on input line 130.
 (pdftex.def)             Requested size: 187.89914pt x 141.43892pt.
-<loss.png, id=57, 639.38875pt x 476.78125pt>
+<loss.png, id=53, 639.38875pt x 476.78125pt>
 File: loss.png Graphic file (type png)
 <use loss.png>
-Package pdftex.def Info: loss.png  used on input line 148.
+Package pdftex.def Info: loss.png  used on input line 134.
 (pdftex.def)             Requested size: 187.89914pt x 140.11089pt.
-<results.png, id=58, 328.22626pt x 33.12375pt>
+<results.png, id=54, 328.22626pt x 33.12375pt>
 File: results.png Graphic file (type png)
 <use results.png>
-Package pdftex.def Info: results.png  used on input line 154.
+Package pdftex.def Info: results.png  used on input line 140.
 (pdftex.def)             Requested size: 187.89914pt x 18.9626pt.
-<solved.png, id=59, 196.735pt x 201.75375pt>
+<solved.png, id=55, 196.735pt x 201.75375pt>
 File: solved.png Graphic file (type png)
 <use solved.png>
-Package pdftex.def Info: solved.png  used on input line 158.
+Package pdftex.def Info: solved.png  used on input line 144.
 (pdftex.def)             Requested size: 187.89914pt x 192.69011pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -420,14 +420,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A75AE4CA064FB4D262765C67A32ADC6E;810.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 064BD6092A6B2D541AED9FDE834C3520;723
+(rerunfilecheck)             After:  A75AE4CA064FB4D262765C67A32ADC6E;810.
  ) 
 Here is how much of TeX's memory you used:
- 10107 strings out of 474116
- 153245 string characters out of 5743682
+ 10105 strings out of 474116
+ 153219 string characters out of 5743682
  1940187 words of memory out of 5000000
- 32328 multiletter control sequences out of 15000+600000
+ 32327 multiletter control sequences out of 15000+600000
  568306 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,18n,79p,677b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -446,10 +452,10 @@ ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/
 2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2
 024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (5 pages, 401561 bytes).
+Output written on main.pdf (5 pages, 399906 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 148 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
