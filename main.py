@@ -64,7 +64,7 @@ def solve_sudoku(initial_clues,
                 if g != 0:
                     pred = (p[r, c] * np.arange(1, 10)).sum()
                     err = 2 * (pred - g)
-                    grad[r, c] += w_giv * err * np.arange(1, 10) * p[r, c] * (1 - p[r, c]) # calculate loss
+                    grad[r, c] += w_giv * err * np.arange(1, 10)
 
         for d in range(9):
             row_sum = p[:, :, d].sum(axis=1, keepdims=True)
